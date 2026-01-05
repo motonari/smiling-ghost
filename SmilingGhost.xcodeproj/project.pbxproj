@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		466D61692F0A1AF600278CF6 /* BlueSight in Frameworks */ = {isa = PBXBuildFile; productRef = 466D61682F0A1AF600278CF6 /* BlueSight */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		46D549AE2F0A14B100E534FB /* SmilingGhost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmilingGhost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		46D549BF2F0A14B100E534FB /* SmilingGhost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmilingGhost.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				466D61692F0A1AF600278CF6 /* BlueSight in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +188,7 @@
 			);
 			name = "SmilingGhost macOS";
 			packageProductDependencies = (
+				466D61682F0A1AF600278CF6 /* BlueSight */,
 			);
 			productName = "SmilingGhost macOS";
 			productReference = 46D549CF2F0A14B100E534FB /* SmilingGhost.app */;
@@ -218,6 +224,9 @@
 			);
 			mainGroup = 46D549A02F0A14AF00E534FB;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				466D61672F0A1AF600278CF6 /* XCLocalSwiftPackageReference "../BlueSight" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 46D549AF2F0A14B100E534FB /* Products */;
 			projectDirPath = "";
@@ -422,8 +431,19 @@
 				DEVELOPMENT_TEAM = 6VVD3HLRMB;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "I want to use Bluetooth.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -457,8 +477,19 @@
 				DEVELOPMENT_TEAM = 6VVD3HLRMB;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = NO;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = NO;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = YES;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "I want to use Bluetooth.";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -637,6 +668,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		466D61672F0A1AF600278CF6 /* XCLocalSwiftPackageReference "../BlueSight" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../BlueSight;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		466D61682F0A1AF600278CF6 /* BlueSight */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = BlueSight;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 46D549A12F0A14AF00E534FB /* Project object */;
 }
