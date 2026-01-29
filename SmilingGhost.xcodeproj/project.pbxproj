@@ -24,6 +24,7 @@
 				Assets.xcassets,
 				GameScene.sks,
 				GameScene.swift,
+				TargetNode.swift,
 			);
 			target = 46D549AD2F0A14B100E534FB /* SmilingGhost iOS */;
 		};
@@ -34,6 +35,7 @@
 				Assets.xcassets,
 				GameScene.sks,
 				GameScene.swift,
+				TargetNode.swift,
 			);
 			target = 46D549BE2F0A14B100E534FB /* SmilingGhost tvOS */;
 		};
@@ -44,6 +46,7 @@
 				Assets.xcassets,
 				GameScene.sks,
 				GameScene.swift,
+				TargetNode.swift,
 			);
 			target = 46D549CE2F0A14B100E534FB /* SmilingGhost macOS */;
 		};

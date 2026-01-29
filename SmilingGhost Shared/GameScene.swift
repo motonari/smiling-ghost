@@ -1,16 +1,12 @@
-//
-
-import SpriteKit
 import BlueSight
+import SpriteKit
 
 class GameScene: SKScene {
 
-    fileprivate var label: SKLabelNode?
-    fileprivate var spinnyNode: SKShapeNode?
+    private var sightNode: SKShapeNode?
 
+    private var targetNode: SKNode?
     private var blueSight = BlueSight()
-    private var sightX: CGFloat = 0.0
-    private var sightY: CGFloat = 0.0
 
     class func newGameScene() -> GameScene {
         // Load 'GameScene.sks' as an SKScene.
@@ -26,59 +22,32 @@ class GameScene: SKScene {
     }
 
     func setUpScene() {
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
+        physicsWorld.gravity = CGVector.zero
+
+        targetNode = TargetNode()
+
+        sightNode = SKShapeNode(circleOfRadius: 10.0)
+        sightNode?.fillColor = .red
+        if let sightNode {
+            addChild(sightNode)
         }
 
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.01
-        self.spinnyNode = SKShapeNode.init(
-            rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
-
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 4.0
-            // spinnyNode.run(
-            //     SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(Double.pi), duration: 1)))
-            // spinnyNode.run(
-            //     SKAction.sequence([
-            //         SKAction.wait(forDuration: 0.1),
-            //         SKAction.fadeOut(withDuration: 0.1),
-            //         SKAction.removeFromParent(),
-            //     ]))
-            self.addChild(spinnyNode)
-        }
-        
-        self.sightX = 0
-        self.sightY = 0
+        self.blueSight.start()
     }
 
     override func didMove(to view: SKView) {
         self.setUpScene()
     }
 
-    func makeSpinny(at pos: CGPoint, color: SKColor) {
-        if let spinny = self.spinnyNode?.copy() as! SKShapeNode? {
-            spinny.position = pos
-            spinny.strokeColor = color
-            self.addChild(spinny)
-        }
-    }
-
     override func update(_ currentTime: TimeInterval) {
-        Task { @MainActor in
-            await performUpdate(currentTime)
-        }
-        
-    }
-    
-    func performUpdate(_ currentTime: TimeInterval) async {
-        var point = await blueSight.point
+        var point = blueSight.location
         point.x *= self.size.width / 2.0
         point.y *= self.size.height / 2.0
-        spinnyNode?.position = point
+
+        if let sightNode {
+            let action = SKAction.move(to: point, duration: 0.0)
+            sightNode.run(action)
+        }
     }
 }
 
@@ -122,18 +91,17 @@ class GameScene: SKScene {
     extension GameScene {
 
         override func mouseDown(with event: NSEvent) {
-            if let label = self.label {
-                label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
+            if let targetNode = self.targetNode {
+                if targetNode.contains(event.location(in: self)) {
+                    print("Hit")
+                }
             }
-            self.makeSpinny(at: event.location(in: self), color: SKColor.green)
         }
 
         override func mouseDragged(with event: NSEvent) {
-            self.makeSpinny(at: event.location(in: self), color: SKColor.blue)
         }
 
         override func mouseUp(with event: NSEvent) {
-            self.makeSpinny(at: event.location(in: self), color: SKColor.red)
         }
 
     }
